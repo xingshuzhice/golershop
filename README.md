@@ -214,3 +214,59 @@ All rights reserved。<br>
 ShopSuite® 商标和著作权所有者为随商信息技术（上海）有限公司。<br>
 
 ---
+
+
+
+```bash
+
+brew services list
+
+brew install mysql@8.0
+
+brew services start mysql@8.0
+
+brew services stop mysql@8.0
+
+mysql -u root
+
+
+
+
+前提：本地已安装Go环境
+
+本地运行准备
+
+1：下载安装开发工具GoLand ：https://www.jetbrains.com/go/
+
+2：下载开源版Golershop源码：https://gitee.com/suisung/golershop
+
+3：安装部署SQL下载地址：https://www.shopsuite.cn/uploads/sql/shopsuite-001.sql
+
+安装部署SQL下载地址：https://www.shopsuite.cn/uploads/sql/shopsuite-001.sql
+
+后台默认账号:admin   
+后台默认密码:shopsuite.cn
+
+4：下载安装数据库：MySQL8.0
+ls -la /opt/homebrew/etc/my.cnf
+注意修改：sql-mode="NO_ENGINE_SUBSTITUTION"
+
+
+# create user 'modulith_open'@'localhost' identified by 'pwd';
+# FLUSH PRIVILEGES;
+
+# CREATE DATABASE modulith_open CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+# CREATE DATABASE IF NOT EXISTS modulith_open CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+# grant all privileges on modulith_open.* to 'modulith_open'@'localhost';
+
+下载安装redis
+
+5：创建数据库导入下载的sql。
+
+6：解压开源版golershop源码
+
+7：使用Goland导入源码
+
+8：修改数据库配置文件 golershop-open-1.0\manifest\config\config.yaml
+
+```

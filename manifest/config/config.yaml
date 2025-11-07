@@ -81,6 +81,14 @@ database:
     stdout: true
     ctxKeys: [ "RequestId" ]
 
+
+# create user 'modulith_open'@'localhost' identified by 'pwd';
+# FLUSH PRIVILEGES;
+
+# CREATE DATABASE modulith_open CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+# CREATE DATABASE IF NOT EXISTS modulith_open CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+# grant all privileges on modulith_open.* to 'modulith_open'@'localhost';
+
   default:
     link: "mysql:modulith_open:pwd@tcp(localhost:3306)/modulith_open?loc=Local&parseTime=true"
     debug: true
