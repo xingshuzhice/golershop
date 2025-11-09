@@ -2,6 +2,7 @@ package sys
 
 import (
 	"context"
+
 	"github.com/gogf/gf/v2/util/gconv"
 	"github.com/mallsuite/gocore/core/ml"
 	"golershop.cn/api/sys"
@@ -123,8 +124,10 @@ func (c *cMaterial) ListBase(ctx context.Context, req *sys.MaterialBaseListReq) 
 		BaseList: ml.BaseList{Page: req.Page,
 			Size:      req.Size,
 			WhereLike: likes,
-			Sidx:      dao.MaterialBase.Columns().MaterialSort,
-			Sort:      "ASC"},
+			Sidx:      dao.MaterialBase.Columns().MaterialTime,
+			// Sort:      "ASC", // ASC DESC
+			Sort: "DESC", // 按时间倒序
+		},
 		Where: item,
 	})
 

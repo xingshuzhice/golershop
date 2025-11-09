@@ -155,7 +155,7 @@ redis:
   default:
     address: 127.0.0.1:6379
     db: 10
-    pass: dev_pwd_123
+    # pass: dev_pwd_123
 
     minIdle: "4"   # 允许闲置的最小连接数
     maxIdle: "8"  # 允许闲置的最大连接数(0表示不限制)
@@ -256,6 +256,7 @@ shopSuite:
   # 文件上传磁盘位置
   uploadDir: "./resource/public/uploads"
 
+# http://192.168.0.38:16000/uploads/images/10001/20251107/de2atu8lsp4ney5tjs.jpg
   urlBase: "http://127.0.0.1:8000"
   urlH5: "http://localhost:8080/#"
   urlPc: "https://demo.modulithshop.cn"

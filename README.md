@@ -259,6 +259,33 @@ ls -la /opt/homebrew/etc/my.cnf
 # CREATE DATABASE IF NOT EXISTS modulith_open CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 # grant all privileges on modulith_open.* to 'modulith_open'@'localhost';
 
+
+# create user 'modulith_open'@'%' identified by 'pwd';
+# FLUSH PRIVILEGES;
+
+# CREATE DATABASE modulith_open CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+# CREATE DATABASE IF NOT EXISTS modulith_open CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+# grant all privileges on modulith_open.* to 'modulith_open'@'%';
+
+
+```sql
+-- 创建数据库（如果不存在）
+CREATE DATABASE IF NOT EXISTS modulith_open CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- 创建用户并允许从 Docker 宿主机 IP 连接（关键步骤）
+CREATE USER IF NOT EXISTS 'modulith_open'@'172.17.0.1' IDENTIFIED BY 'pwd';
+
+-- 授予权限
+GRANT ALL PRIVILEGES ON modulith_open.* TO 'modulith_open'@'172.17.0.1';
+
+-- 可选：允许从任意主机连接（开发环境简化操作）
+CREATE USER IF NOT EXISTS 'modulith_open'@'%' IDENTIFIED BY 'pwd';
+GRANT ALL PRIVILEGES ON modulith_open.* TO 'modulith_open'@'%';
+
+FLUSH PRIVILEGES;
+
+```
+
 下载安装redis
 
 5：创建数据库导入下载的sql。
@@ -270,3 +297,39 @@ ls -la /opt/homebrew/etc/my.cnf
 8：修改数据库配置文件 golershop-open-1.0\manifest\config\config.yaml
 
 ```
+
+
+docker run -p 3306:3306 --name mysql -v /data/docker/mysql/conf:/etc/mysql/conf.d -v /data/docker/mysql/logs:/logs -v /data/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d --restart always arm64v8/mysql
+
+
+sudo docker run -p 3306:3306 --name mysql \
+-v /usr/local/docker/mysql/mysql-files:/var/lib/mysql-files \
+-v /usr/local/docker/mysql/conf:/etc/mysql \
+-v /usr/local/docker/mysql/logs:/var/log/mysql \
+-v /usr/local/docker/mysql/data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+-d mysql:8.0.23
+
+
+
+docker run -p 3306:3306 --name mysql -v /data/docker/mysql/conf:/etc/mysql/conf.d -v /data/docker/mysql/logs:/logs -v /data/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d --restart always mysql:8.0.23
+
+
+docker run -p 3306:3306 --name mysql8 -v /data/docker/mysql/conf:/etc/mysql/conf.d -v /data/docker/mysql/logs:/logs -v /data/docker/mysql/data:/var/lib/mysql -v /etc/localtime:/etc/localtime -e MYSQL_ROOT_PASSWORD=123456 -d --restart unless-stopped mysql:8.0.23
+
+
+sudo docker exec -it mysql8 bash
+
+sudo docker restart mysql8
+
+
+sudo docker run -d --name redis -p 6379:6379 --restart=unless-stopped -v /data/docker/redis/conf/redis.conf:/redis.conf -v /data/docker/redis/data:/data redis:5.0 redis-server --appendonly yes
+sudo docker run -d --name redis -p 6379:6379 --restart=unless-stopped -v /data/docker/redis/conf/redis.conf:/redis.conf -v /data/docker/redis/data:/data redis:5.0 redis-server
+
+
+sudo docker run -d --name redis -p 6379:6379 \
+  --restart=unless-stopped \
+  -v /data/docker/redis/conf/redis.conf:/redis.conf \
+  -v /data/docker/redis/data:/data \
+  redis:5.0 \
+  redis-server --appendonly yes
