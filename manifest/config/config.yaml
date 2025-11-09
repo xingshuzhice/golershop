@@ -257,8 +257,10 @@ shopSuite:
   uploadDir: "./resource/public/uploads"
 
 # http://192.168.0.38:16000/uploads/images/10001/20251107/de2atu8lsp4ney5tjs.jpg
-  urlBase: "http://127.0.0.1:8000"
-  urlH5: "http://localhost:8080/#"
+  # urlBase: "http://127.0.0.1:8000"
+  # urlH5: "http://localhost:8080/#"
+  urlBase: "http://192.168.0.38:18000"
+  urlH5: "http://192.168.0.38:18000/h5/#"
   urlPc: "https://demo.modulithshop.cn"
 
   # 启用缓存
