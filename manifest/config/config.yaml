@@ -4,7 +4,7 @@ server:
   #swaggerPath: "/swagger"
 
   # 基本配置
-  address: ":8000"                        # 本地监听地址。默认":80"
+  address: ":8888"                        # 本地监听地址。默认":80"
   httpsAddr: ":443"                       # TLS/HTTPS配置，同时需要配置证书和密钥。默认关闭
   httpsCertPath: ""                           # TLS/HTTPS证书文件本地路径，建议使用绝对路径。默认关闭
   httpsKeyPath: ""                           # TLS/HTTPS密钥文件本地路径，建议使用绝对路径。默认关闭
@@ -259,9 +259,14 @@ shopSuite:
 # http://192.168.0.38:16000/uploads/images/10001/20251107/de2atu8lsp4ney5tjs.jpg
   # urlBase: "http://127.0.0.1:8000"
   # urlH5: "http://localhost:8080/#"
-  urlBase: "http://192.168.0.38:18000"
-  urlH5: "http://192.168.0.38:18000/h5/#"
-  urlPc: "https://demo.modulithshop.cn"
+  ## debug
+  # urlBase: "http://192.168.0.38:18000"
+  # urlH5: "http://192.168.0.38:18000/h5/#"
+  # urlPc: "https://demo.modulithshop.cn"
+
+  urlBase: "https://springlandy.com"
+  urlH5: "https://springlandy.com/h5/#"
+  urlPc: "https://springlandy.com"
 
   # 启用缓存
   cacheEnable: "false"

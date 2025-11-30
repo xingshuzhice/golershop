@@ -244,13 +244,14 @@ mysql -u root
 
 安装部署SQL下载地址：https://www.shopsuite.cn/uploads/sql/shopsuite-001.sql
 
-后台默认账号:admin   
-后台默认密码:shopsuite.cn
+后台默认账号: admin   
+后台默认密码: shopsuite.cn
 
 4：下载安装数据库：MySQL8.0
 ls -la /opt/homebrew/etc/my.cnf
 注意修改：sql-mode="NO_ENGINE_SUBSTITUTION"
 
+mysql -u root -p
 
 # create user 'modulith_open'@'localhost' identified by 'pwd';
 # FLUSH PRIVILEGES;
