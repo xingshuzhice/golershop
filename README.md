@@ -334,3 +334,13 @@ sudo docker run -d --name redis -p 6379:6379 \
   -v /data/docker/redis/data:/data \
   redis:5.0 \
   redis-server --appendonly yes
+
+
+
+```bash
+
+https://springlandy.com/
+
+http://192.168.0.38:18000/uploads/images/10001/20251113/de7fk8utosebcmteg0.jpg
+
+```
