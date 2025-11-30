@@ -19,6 +19,8 @@ go.work
 
 logs/*
 
+resource/public/uploads
+
 
 
 .buildpath
